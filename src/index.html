@@ -4,9 +4,202 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    
     <title>Document</title>
 </head>
 <body>
-    hello world
+    <section>
+        <div class="container py-5">
+            <p>Your opinion is very important to us. The ratings you provide will enable our team and all our legal service providers to improve their customer experience and will help users choose a legal expert in the future. </p>
+            <form id="partner-review-form" onsubmit="handlePartnerReviewForm(event)">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input value="Joe Quotes" disabled placeholder="Your alias..." type="text" class="form-control" id="name" aria-describedby="nameHelp">
+                    
+                    <div id="provide-alias" class="partner-check">
+                        <input type="checkbox" class="form-check-input" id="provide-anom">
+                        <label class="form-check-label" for="provide-anom">I’d like to hide my name and provide an alias</label>
+                    </div>
+                </div>
+
+
+                <div class="form-group required" data-type="radio" onclick="validate(this)">
+                    <p class="error-msg">Please fill out this field</p>
+                    <label for="rate-partner">How would you rate your experience with [Partner name]?</label>
+                    <div class="stars rate-experience">
+                        
+                        <input id="star1" name="ratePartner" type="radio" aria-label="Radio button for following text input" value="5">
+                        <label for='star1'><i class="fa-solid fa-star"></i></label>
+
+                        <input id="star2" name="ratePartner" type="radio" aria-label="Radio button for following text input" value="4">
+                        <label for='star2'><i class="fa-solid fa-star"></i></label>
+
+                        <input id="star3" name="ratePartner" type="radio" aria-label="Radio button for following text input" value="3">
+                        <label for='star3'><i class="fa-solid fa-star"></i></label>
+
+                        <input id="star4" name="ratePartner" type="radio" aria-label="Radio button for following text input" value="2">
+                        <label for='star4'><i class="fa-solid fa-star"></i></label>
+
+                        <input id="star5" name="ratePartner" type="radio" aria-label="Radio button for following text input" value="1">
+                        <label for='star5'><i class="fa-solid fa-star"></i></label>
+                    </div>
+                </div>
+
+                <div class="form-group required" data-type="textarea">
+                    <p class="error-msg">Please fill out this field</p>
+                    <label for="your-experience">Tell us more about your experience</label>
+                    <textarea oninput="validate(this.parentNode)" placeholder="Type here..." class="form-control" id="your-experience" rows="3"></textarea>
+                </div>
+
+                <div class="form-group required" data-type="radio" onclick="validate(this)">
+                    <p class="error-msg">Please fill out this field</p>
+                    <label for="rate-partner">Were you satisfied with the outcome of your legal matter?</label>
+                    <div class="thumbs">
+                        
+                        <input id="thumbup" name="satisfied" type="radio" aria-label="Radio button for following text input" value="5">
+                        <label for='thumbup'><i class="fa-solid fa-thumbs-up"></i></label>
+
+                        <input id="thumbdown" name="satisfied" type="radio" aria-label="Radio button for following text input" value="4">
+                        <label for='thumbdown'><i class="fa-solid fa-thumbs-down"></i></label>
+
+                        <div id="wrong" class="form-group">
+                            <label for="what-went-wrong">What went wrong? (optional)</label>
+                            <textarea class="form-control" id="what-went-wrong" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div id="impressions" class="form-group required" data-type="radio" onclick="validate(this)">
+                    <p class="error-msg">Please fill out this field</p>
+                    <label>Tell us more about [partner name]:</label>
+
+                    <div>
+                        <div class="info-title">Inital impressions
+                            <i class="fa-solid fa-circle-info"></i>
+                            <div class="info-box">How was your inital contact with said partner?</div>
+                        </div>
+                        <div class="stars">
+                            <input id="impression1" name="impression" type="radio" aria-label="Radio button for following text input" value="5">
+                            <label for='impression1'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="impression2" name="impression" type="radio" aria-label="Radio button for following text input" value="4">
+                            <label for='impression2'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="impression3" name="impression" type="radio" aria-label="Radio button for following text input" value="3">
+                            <label for='impression3'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="impression4" name="impression" type="radio" aria-label="Radio button for following text input" value="2">
+                            <label for='impression4'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="impression5" name="impression" type="radio" aria-label="Radio button for following text input" value="1">
+                            <label for='impression5'><i class="fa-solid fa-star"></i></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-title">Legal knowledge <i class="fa-solid fa-circle-info"></i><div class="info-box">How was your inital contact with said partner?</div></div>
+                        <div class="stars">
+                            <input id="legal-knowledge1" name="legal-knowledge" type="radio" aria-label="Radio button for following text input" value="5">
+                            <label for='legal-knowledge1'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="legal-knowledge2" name="legal-knowledge" type="radio" aria-label="Radio button for following text input" value="4">
+                            <label for='legal-knowledge2'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="legal-knowledge3" name="legal-knowledge" type="radio" aria-label="Radio button for following text input" value="3">
+                            <label for='legal-knowledge3'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="legal-knowledge4" name="legal-knowledge" type="radio" aria-label="Radio button for following text input" value="2">
+                            <label for='legal-knowledge4'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="legal-knowledge5" name="legal-knowledge" type="radio" aria-label="Radio button for following text input" value="1">
+                            <label for='legal-knowledge5'><i class="fa-solid fa-star"></i></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-title">Value for money <i class="fa-solid fa-circle-info"></i><div class="info-box">How was your inital contact with said partner?</div></div>
+                        <div class="stars">
+                            <input id="value-for-money1" name="value-for-money" type="radio" aria-label="Radio button for following text input" value="5">
+                            <label for='value-for-money1'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="value-for-money2" name="value-for-money" type="radio" aria-label="Radio button for following text input" value="4">
+                            <label for='value-for-money2'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="value-for-money3" name="value-for-money" type="radio" aria-label="Radio button for following text input" value="3">
+                            <label for='value-for-money3'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="value-for-money4" name="value-for-money" type="radio" aria-label="Radio button for following text input" value="2">
+                            <label for='value-for-money4'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="value-for-money5" name="value-for-money" type="radio" aria-label="Radio button for following text input" value="1">
+                            <label for='value-for-money5'><i class="fa-solid fa-star"></i></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-title">Approachability <i class="fa-solid fa-circle-info"></i><div class="info-box">How was your inital contact with said partner?</div></div>
+                        <div class="stars">
+                            <input id="approachability1" name="approachability" type="radio" aria-label="Radio button for following text input" value="5">
+                            <label for='approachability1'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="approachability2" name="approachability" type="radio" aria-label="Radio button for following text input" value="4">
+                            <label for='approachability2'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="approachability3" name="approachability" type="radio" aria-label="Radio button for following text input" value="3">
+                            <label for='approachability3'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="approachability4" name="approachability" type="radio" aria-label="Radio button for following text input" value="2">
+                            <label for='approachability4'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="approachability5" name="approachability" type="radio" aria-label="Radio button for following text input" value="1">
+                            <label for='approachability5'><i class="fa-solid fa-star"></i></label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-title">Communication <i class="fa-solid fa-circle-info"></i><div class="info-box">How was your inital contact with said partner?</div></div>
+                        <div class="stars">
+                            <input id="communication1" name="communication" type="radio" aria-label="Radio button for following text input" value="5">
+                            <label for='communication1'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="communication2" name="communication" type="radio" aria-label="Radio button for following text input" value="4">
+                            <label for='communication2'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="communication3" name="communication" type="radio" aria-label="Radio button for following text input" value="3">
+                            <label for='communication3'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="communication4" name="communication" type="radio" aria-label="Radio button for following text input" value="2">
+                            <label for='communication4'><i class="fa-solid fa-star"></i></label>
+
+                            <input id="communication5" name="communication" type="radio" aria-label="Radio button for following text input" value="1">
+                            <label for='communication5'><i class="fa-solid fa-star"></i></label>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+
+                <!-- bottom checks -->
+                <div class="form-group">
+                    <div class="partner-check">
+                        <input type="checkbox" class="form-check-input" id="agreement">
+                        <label class="form-check-label" for="agreement">I agree that this review is a fair and balanced view of my personal experience of using [partner name]</label>
+                    </div>
+                    <div class="partner-check">
+                        <input type="checkbox" class="form-check-input" id="no-publish">
+                        <label class="form-check-label" for="no-publish">Tick here if you do not wish your comments and ratings to be published.<br />
+                        (Your feedback will still be read by The Law Superstore)</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </section>
 </body>
 </html>
+<script src="./index.js"></script>

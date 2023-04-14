@@ -1,0 +1,186 @@
+body, html {
+    font-size: 16px;
+    color: #002E3F !important;
+}
+#partner-review-form input[type=radio] {
+    display: none;
+}
+#partner-review-form label {
+    font-weight: 700;
+}
+#partner-review-form .form-group {
+    margin-bottom: 60px;
+    transition: all .3s;
+}
+#partner-review-form .partner-check {
+    padding: 10px 0px !important;
+}
+#partner-review-form .partner-check input {
+    margin-left: 0px !important;
+    position: static;
+    margin-right: 10px;
+    transform: scale(1.2);
+    vertical-align: top;
+}
+#partner-review-form .partner-check label {
+    font-weight: 500 !important;
+}
+
+#partner-review-form .stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+#partner-review-form .stars input {
+    display: none;
+}
+#partner-review-form .stars label i {
+    color: #E1E4E6;
+    font-size: 23px;
+    transition: all .2s;
+    margin: 0 10px;
+}
+#partner-review-form .stars label:nth-of-type(5) i {
+    margin-left: 0px;
+}
+#partner-review-form .stars label i:hover, #partner-review-form .stars label:hover~label i, #partner-review-form .stars input:checked~label i {
+    color: #F48C39;
+}
+#partner-review-form .thumbs i {
+    color: #E1E4E6;
+    font-size: 24px;
+    /* margin-right: 10px; */
+    transition: all .3s;
+}
+#wrong {
+    height: 0px;
+    overflow: hidden;
+    margin-bottom: 0px !important;
+    transition: all .4s;
+}
+#thumbdown:checked ~ #wrong  {
+    margin-top: 60px;
+    overflow: auto;
+    height: auto;
+}
+
+#partner-review-form #name {
+    /* display: none; */
+}
+#partner-review-form p {
+    margin-bottom: 0 !important;
+}
+#partner-review-form #thumbup + label, #partner-review-form #thumbdown+label {
+    border: 1px solid #cbcbcb;
+    padding: 5px 20px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+#partner-review-form .thumbs #thumbdown:checked+label i, #partner-review-form .thumbs #thumbdown:checked+label {
+    color: rgb(183, 0, 0);
+    border-color: rgb(183, 0, 0);
+}
+#partner-review-form .thumbs #thumbup:checked+label i, #partner-review-form .thumbs #thumbup:checked+label {
+    color: green;
+    border-color: green;
+}
+
+input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    /* Remove most all native input styles */
+    appearance: none;
+    /* For iOS < 15 */
+    background-color: var(--form-background);
+    /* Not removed via appearance */
+    margin: 0;
+
+    font: inherit;
+    color: currentColor;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+
+    display: inline-grid;
+    place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+}
+#partner-review-form .thumbs label {
+    transition: all .3s;
+}
+#partner-review-form .thumbs label:hover {
+    background-color: #e2e2e2;
+}
+#partner-review-form .thumbs label:hover i {
+    color: #858585;
+}
+.form-group:not(#wrong) {
+    border: 1px solid rgb(204, 204, 204);
+    padding: 40px;
+    border-radius: 8px;
+}
+
+#impressions p {
+    margin-bottom: 10px !important;
+}
+
+.info-title {
+    position: relative;
+    width: fit-content;
+    margin-bottom: 10px;
+}
+.info-box {
+    position: absolute;
+    left: 105%;
+    top: -350%;
+    min-width: 200px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgb(206, 206, 206);
+    transition: all .4s;
+    pointer-events: none;
+    opacity: 0;
+}
+.info-box.info-box-show {
+    opacity: 1;
+    /* pointer-events: all; */
+}
+#partner-review-form .error {
+    border-color: red;
+    background-color: rgb(254, 232, 236);
+}
+#partner-review-form .error-msg {
+    color: red;
+    display: none;
+}
+#partner-review-form .error .error-msg {
+    display: block;
+}
